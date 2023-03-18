@@ -1,0 +1,38 @@
+body {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #AA937F;
+  font-size: 28px;
+}
+
+.topImage{
+  height:100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.title{
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+.subtitle{
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+.link:link{
+  font-style: italic;
+  text-decoration: none;
+  color: #9B006B;
+}
+
+.link:visited{
+  font-style: italic;
+  text-decoration: none;
+  color: #9B006B;
+}
+
+.orderProcess{
+  text-align: center;
+}

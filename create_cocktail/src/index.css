@@ -1,0 +1,87 @@
+body {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #AA937F;
+  font-size: 28px;
+}
+
+.Create_Order{
+  text-align: center;
+  position:relative;
+}
+
+.Cocktail_Name{
+  font-size: 22px;
+  font-weight: bold;
+  position: absolute;
+  right:44%;
+  top:2px;
+  display: inline;
+}
+
+.Input{
+  width:150px;
+  background-color: #584B3C;
+  color: white;
+}
+
+.Cocktail_1stSpirit{
+  font-size: 22px;
+  font-weight: bold;
+  position: absolute;
+  top:43px;
+  right:64%;
+}
+
+.Cocktail_Sweet{
+  font-size: 22px;
+  font-weight: bold;
+  position: absolute;
+  top:43px;
+  right:26%;
+}
+
+.Cocktail_2stSpirit{
+  font-size: 22px;
+  font-weight: bold;
+  position: absolute;
+  top:250px;
+  right:64%;
+}
+
+.Cocktail_Sour{
+  font-size: 22px;
+  font-weight: bold;
+  position: absolute;
+  top:160px;
+  right:26%;
+}
+
+.Cocktail_AddOns{
+  font-size: 22px;
+  font-weight: bold;
+  position: absolute;
+  top:320px;
+  right:26%;
+}
+
+.Input2{
+  width:72px;
+  background-color: #584B3C;
+  color: white;
+}
+
+.Cocktail_Calc{
+  font-size: 22px;
+  font-weight: bold;
+  position: absolute;
+  right:49.5%;
+  top:350px;
+}
+
+.Submit{
+  font-size: 22px;
+  font-weight: bold;
+  position: absolute;
+  right:44.5%;
+  top:350px;
+}
