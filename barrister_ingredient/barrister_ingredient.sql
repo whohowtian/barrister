@@ -1,0 +1,63 @@
+CREATE DATABASE IF NOT EXISTS `barrister_ingredient` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `barrister_ingredient`;
+
+DROP TABLE IF EXISTS `ingredient`;
+CREATE TABLE IF NOT EXISTS `ingredient` 
+(
+    `ingredient_id`	INT,
+    `ingredient_name`	VARCHAR(512),
+    `ingredient_category`	VARCHAR(512),
+    `ingredient_price`	DOUBLE,
+    PRIMARY KEY (`ingredient_id`)
+);
+
+INSERT INTO `ingredient` (`ingredient_id`, `ingredient_name`, `ingredient_category`, `ingredient_price`) VALUES
+	('1', 'Vodka', 'spirit', '6.5'),
+	('2', 'Gin', 'spirit', '6.5'),
+	('3', 'Whiskey', 'spirit', '6.5'),
+	('4', 'Tequila', 'spirit', '6.5'),
+	('5', 'Rum', 'spirit', '6.5'),
+	('6', 'Brandy', 'spirit', '6.5'),
+	('7', 'Dry Vermouth', 'spirit', '6.5'),
+	('8', 'Sweet Vermouth', 'sweet', '4'),
+	('9', 'Triple Sec', 'sweet', '4'),
+	('10', 'Kahlua', 'sweet', '4'),
+	('11', 'Aperol', 'spirit', '6.5'),
+	('13', 'St. Germain', 'spirit', '6.5'),
+	('14', 'Amaretto', 'spirit', '6.5'),
+	('15', 'Grand Marnier', 'spirit', '6.5'),
+	('16', 'Pernod', 'spirit', '6.5'),
+	('17', 'RumChata', 'sweet', '4'),
+	('18', 'Cointreau', 'sweet', '4'),
+	('19', 'Chambord', 'sweet', '4'),
+	('20', 'Drambuie', 'sweet', '4'),
+	('21', 'Frangelico', 'sweet', '4'),
+	('22', 'Baileys', 'sweet', '4'),
+	('23', 'Vanilla Syrup', 'sweet', '4'),
+	('24', 'Mixed Berry Syrup', 'sweet', '4'),
+	('25', 'Simple Syrup', 'sweet', '4'),
+	('26', 'Maraschino Liqueur', 'sweet', '4'),
+	('27', 'Honey', 'sweet', '4'),
+	('28', 'Agave Syrup', 'sweet', '4'),
+	('29', 'Lime Juice', 'sour', '4.5'),
+	('30', 'Lemon Juice', 'sour', '4.5'),
+	('31', 'Grapefruit Juice', 'sour', '4.5'),
+	('32', 'Cynar', 'sour', '4.5'),
+	('33', 'Sour Apple', 'sour', '4.5'),
+	('34', 'Cranberry Juice', 'sour', '4.5'),
+	('35', 'Pomegranate Juice', 'sour', '4.5'),
+	('36', 'Edible Sprinkle', 'add_on', '2.5'),
+	('37', 'Spear Peppermint', 'add_on', '2.5'),
+	('38', 'Basil', 'add_on', '2.5'),
+	('39', 'Cardamom', 'add_on', '2.5'),
+	('40', 'Cinnamon', 'add_on', '2.5'),
+	('41', 'Coriander', 'add_on', '2.5'),
+	('42', 'Star Anise', 'add_on', '2.5'),
+	('43', 'Ginger', 'add_on', '2.5'),
+	('44', 'Lavender', 'add_on', '2.5'),
+	('45', 'Olive', 'add_on', '2.5'),
+	('46', 'Rosemary', 'add_on', '2.5'),
+	('47', 'Orange Juice', 'sour', '4.5'),
+	('48', 'Lemongrass', 'add_on', '2.5'),
+	('49', 'Eucalyptus', 'add_on', '2.5'),
+	('50', 'Soda', 'sweet', '4');
