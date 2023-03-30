@@ -136,14 +136,14 @@ def find_addons_by_cocktail_id(cocktail_id):
 @app.route("/barrister_cocktail/create_cocktail", methods=['POST'])
 def create_cocktail():
     cocktail = request.get_json()
-    cocktailName = cocktail['name']
+    # cocktailName = cocktail['name']
 
-    if (Cocktail.query.filter_by(cocktail_name=cocktailName).first()):
-        return jsonify(
-            {
-                "message": "Cocktail already exists."
-            }
-        ), 400
+    # if (Cocktail.query.filter_by(cocktail_name=cocktailName).first()):
+    #     return jsonify(
+    #         {
+    #             "message": "Cocktail already exists."
+    #         }
+    #     ), 400
 
     max_cocktail_id = db.session.query(func.max(Cocktail.cocktail_id)).first()
 
@@ -152,16 +152,16 @@ def create_cocktail():
     else:
         cocktailID = max_cocktail_id[0] + 1
 
-    newCocktail = Cocktail(cocktailID, cocktailName, cocktail['spirit1'], cocktail['spirit2'], 
+    newCocktail = Cocktail(cocktailID, cocktail['name'], cocktail['spirit1'], cocktail['spirit2'], 
                         cocktail['sweet'], cocktail['sour'], cocktail['user'], cocktail['total'])
 
     try:
         db.session.add(newCocktail)
-        db.session.commit()
 
         for addOn in cocktail['add_ons']:
             db.session.add(Add_ons(addOn, cocktailID))
-            db.session.commit()
+
+        db.session.commit()
 
     except:
         return jsonify(

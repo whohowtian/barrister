@@ -38,17 +38,26 @@ export default () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    axios.post("http://localhost:3003/barrister_cocktail/create_cocktail", {
+    const data = {
       name: nameRef.current.value,
       spirit1: spirit1.ingredient_id,
       spirit2: spirit2.ingredient_id,
       sweet: sweet.ingredient_id,
       sour: sour.ingredient_id,
-      add_ons: [add1.ingredient_id && add1.ingredient_id, add2.ingredient_id && add2.ingredient_id,
-        add3.ingredient_id && add3.ingredient_id],
+      add_ons: [],
       total: total,
-      user: user
-    })
+      user: user,
+    };
+    if (add1.ingredient_id){
+      data.add_ons.push(add1.ingredient_id)
+    }
+    if (add2.ingredient_id){
+      data.add_ons.push(add2.ingredient_id)
+    }
+    if (add3.ingredient_id){
+      data.add_ons.push(add3.ingredient_id)
+    }
+    axios.post("http://localhost:3003/barrister_cocktail/create_cocktail", data)
     .then(resp => console.log(resp.data.data))
     .catch(err => console.log(err))
   }
