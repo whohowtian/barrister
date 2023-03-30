@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS `order_status` (
   PRIMARY KEY (`status_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `order` (`order_id`, `user_id`, `order_status`) VALUES
-(0, 'PAID'),
+INSERT INTO `order_status` (`status_id`, `status_name`) VALUES
+(0, 'CART'),
 (1, 'IN PROGRESS'),
 (2, 'OUT FOR DELIVERY'),
 (3, 'COMPLETE')
