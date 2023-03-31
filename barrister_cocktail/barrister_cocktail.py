@@ -6,7 +6,9 @@ from sqlalchemy import func
 
 app = Flask(__name__)
 CORS(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = ('mysql+mysqlconnector://root@localhost:3306/barrister_cocktail')
+user = 'root'
+# user = 'debian-sys-maint' #only for jack
+app.config['SQLALCHEMY_DATABASE_URI'] = (f'mysql+mysqlconnector://{user}@localhost:3306/barrister_cocktail')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -157,6 +159,7 @@ def create_cocktail():
 
     try:
         db.session.add(newCocktail)
+        db.session.commit()
 
         for addOn in cocktail['add_ons']:
             db.session.add(Add_ons(addOn, cocktailID))
