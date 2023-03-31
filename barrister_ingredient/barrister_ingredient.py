@@ -5,7 +5,9 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = ('mysql+mysqlconnector://root@localhost:3306/barrister_ingredient')
+user = 'root'
+# user = 'debian-sys-maint' # only for jack
+app.config['SQLALCHEMY_DATABASE_URI'] = (f'mysql+mysqlconnector://{user}@localhost:3306/barrister_ingredient')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
