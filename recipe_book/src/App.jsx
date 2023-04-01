@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-//import Header from 'mainpage/Header';
-//import Footer from 'mainpage/Footer';
+import Header from 'mainpage/Header';
+import Footer from 'mainpage/Footer';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -10,8 +10,9 @@ import Lists from './lists';
 
 const App = () => (
   <>
-
+    <Header/>
     <Container className='p-5'>
+      <br></br>
       <br></br>
         <Row>
           <Col className="title">RECIPE BOOK</Col>        
@@ -23,7 +24,7 @@ const App = () => (
           <Lists/>
       </Container>
     </Container>
-
+    <Footer/>
   </>
 );
 ReactDOM.render(<App />, document.getElementById("app"));
