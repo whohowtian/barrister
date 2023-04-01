@@ -4,7 +4,7 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const deps = require("./package.json").dependencies;
 module.exports = {
   output: {
-    publicPath: "http://localhost:3000/",
+    publicPath: "http://localhost:3005/",
   },
 
   resolve: {
@@ -12,7 +12,7 @@ module.exports = {
   },
 
   devServer: {
-    port: 3000,
+    port: 3005,
     historyApiFallback: true,
   },
 
@@ -27,7 +27,7 @@ module.exports = {
       },
       {
         test: /\.(css|s[ac]ss)$/i,
-        use: ["style-loader", "css-loader", "postcss-loader",],
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
       {
         test: /\.(ts|tsx|js|jsx)$/,
@@ -40,21 +40,17 @@ module.exports = {
         test: /\.(png|jpe?g|gif)$/i,
         loader: 'file-loader'
       },
-      
     ],
   },
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "mainpage",
+      name: "recipe_book",
       filename: "remoteEntry.js",
       remotes: {
-        create_cocktail: "create_cocktail@http://localhost:3001/remoteEntry.js"
+        mainpage: "mainpage@http://localhost:3000/remoteEntry.js",
       },
-      exposes: {
-        "./Header": "./src/Header.jsx",
-        "./Footer": "./src/Footer.jsx"
-      },
+      exposes: {},
       shared: {
         ...deps,
         react: {
