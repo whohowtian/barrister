@@ -4,9 +4,14 @@ import axios from "axios";
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Popup from './details_popup';
+import Alert from './alert';
 import Row from 'react-bootstrap/Row';
+import { CaretLeftSquareFill, CaretRightSquareFill, Cart } from 'react-bootstrap-icons';
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 export default () => {
+    const user = 1;
     const [cocktail_name, setName] = useState({});
 
     useEffect(() => {
@@ -27,6 +32,9 @@ export default () => {
     const [detail, setDetails] = useState({});
     const [addons, setAddons] = useState([]);
     function togglePopup(id){
+        setDetails({});
+        setAddons([]);
+        setNum(0);
         setIsOpen(!isOpen);
 
         if(Number.isInteger(id)){
@@ -36,6 +44,7 @@ export default () => {
                 return axios.get("http://localhost:3003//barrister_cocktail/cocktail/" + id).then((resp) => {
                     const values = {};
                     const addons = [];
+                    values["cocktail_id"] = id;
                     values["cocktail_name"] = resp.data.data.cocktail.cocktail_name;
                     values["cocktail_price"] = resp.data.data.cocktail.cocktail_price;
 
@@ -64,6 +73,55 @@ export default () => {
             })
             .catch((err) => console.log(err));
         }
+    }
+
+    let [num, setNum]= useState(0);
+    let incNum =()=>{
+      if(num<=99)
+      {
+      setNum(Number(num)+1);
+      }
+    };
+    let decNum = () => {
+       if(num>0)
+       {
+        setNum(num - 1);
+       }
+    }
+    let handleChange = (e)=>{
+        setNum(e.target.value);
+        }
+
+    let submit_item = ()=>{
+        //Pseudo code. Will change after order microservice is established.
+
+        //Axios GET order under user_id. Maybe can just condition SQL statement to get just the cart status order.
+        const isCart = true;
+
+        if(isCart){
+            //Axios POST cart item
+            //Post detail["cocktail_id"]
+            //Post num
+            //Post total = detail["cocktail_price"] * num
+            //Retrieve message for alert
+        }else{
+            //Axios POST cart item and create new cart order - refer to barrister_cocktail for reference
+            //Post detail["cocktail_id"]
+            //Post num
+            //Post total = detail["cocktail_price"] * num
+            //Retrieve message for alert
+        }
+        console.log(num);
+        console.log(detail);
+        togglePopup();
+        toggleAlert();
+    }
+
+    const [isAlert, setAlert] = useState(false);
+    
+
+    function toggleAlert(){
+        setAlert(!isAlert);
     }
 
   return (
@@ -107,11 +165,46 @@ export default () => {
                                 })()}
                             </Col>
                         </Row>
+                        <Row>
+                            <Col xs="5">
+                                <Row>
+                                    <Col xs="3"><Button className="input" variant="secondary" onClick={decNum}><CaretLeftSquareFill/></Button></Col>
+                                    <Col xs="4">
+                                        <Form.Group>
+                                            <Form.Control
+                                            style={{fontSize:"20px", textAlign:"center", backgroundColor:"#AA937F", color:"white"}}
+                                            type="number"
+                                            placeholder="0"
+                                            value={num}
+                                            onChange={handleChange}
+                                            readOnly
+                                            min={1}
+                                            />
+                                        </Form.Group>
+                                    </Col>
+                                    <Col xs="3"><Button className="input" variant="secondary" onClick={incNum}><CaretRightSquareFill/></Button></Col>
+                                </Row>
+                            </Col>
+                            <Col>
+                                <Button variant="secondary" className="input" onClick={submit_item}><Cart/> Add to My Cart</Button>
+                            </Col>
+                        </Row>
+                        
                     </Container>
                 </>
             }
-
             handleClose={togglePopup}
+            />}
+        </div>
+
+        <div>
+            {isAlert && <Alert
+            content={
+                <>
+                    <p><i>add AXIOS message</i></p>
+                </>
+            }
+            handleClose={toggleAlert}
             />}
         </div>
     </>    
