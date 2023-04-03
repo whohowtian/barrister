@@ -17,7 +17,7 @@ class Cocktail(db.Model):
     __tablename__ = 'cocktail'
 
     cocktail_id = db.Column(db.Integer, primary_key=True)
-    cocktail_name = db.Column(db.String(255), primary_key=True)
+    cocktail_name = db.Column(db.String(20), primary_key=True)
     first_spirit = db.Column(db.Integer, nullable=False)
     second_spirit = db.Column(db.Integer, nullable=False)
     sweet_base = db.Column(db.Integer, nullable=False)
@@ -100,37 +100,21 @@ def get_all_cocktail():
 @app.route("/barrister_cocktail/cocktail/<string:cocktail_id>")
 def find_cocktail_by_id(cocktail_id):
     cocktail = Cocktail.query.filter_by(cocktail_id=cocktail_id).first()
+    addonlist = Add_ons.query.filter_by(cocktail_id=cocktail_id)
     if cocktail:
         return jsonify(
             {
                 "code": 200,
-                "data": cocktail.json()
-            }
-        )
-    return jsonify(
-        {
-            "code": 404,
-            "message": "Cocktail not found."
-        }
-    ), 404
-
-#Get addons list in one cocktail recipe using cocktail_id
-@app.route("/barrister_cocktail/addons/<string:cocktail_id>")
-def find_addons_by_cocktail_id(cocktail_id):
-    addonlist = Add_ons.query.filter_by(cocktail_id=cocktail_id)
-    if addonlist:
-        return jsonify(
-            {
-                "code": 200,
                 "data": {
-                    "addons": [addons.json() for addons in addonlist]
+                    "cocktail": cocktail.json(),
+                    "addons" : [addons.json() for addons in addonlist]
                 }
             }
         )
     return jsonify(
         {
             "code": 404,
-            "message": "No addons found."
+            "message": "Cocktail not found."
         }
     ), 404
 
@@ -169,12 +153,15 @@ def create_cocktail():
     except:
         return jsonify(
             {
-                "message": "An error occurred creating the cocktail."
+                "code": 500,
+                "message": "Something went wrong. Our legal advise for you is to try again."
             }
         ), 500
  
     return jsonify(
         {
+            "code": 201,
+            "message": "Congratulations! Check out your newly-mixed cocktail in your recipe book.",
             "data": newCocktail.json()
         }
     ), 201

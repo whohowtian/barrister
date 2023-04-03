@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import background from "./img/create-cocktail-blueprint.jpg";
 import "./index.css";
 import axios from "axios";
+import Popup from './Popup';
 
 export default () => {
   const [ings, setIngs] = useState({
@@ -22,6 +23,7 @@ export default () => {
   const [add2, setAdd2] = useState({ ingredient_price: 0 });
   const [add3, setAdd3] = useState({ ingredient_price: 0 });
   const [total, setTotal] = useState(0);
+  
 
   useEffect(() => {
     axios
@@ -36,6 +38,8 @@ export default () => {
       .catch((err) => console.log(err));
   }, []);
 
+  const [message, submit_message] = useState('Hold on...');
+  const [display, display_status] = useState('none');
   function handleSubmit(e) {
     e.preventDefault();
     const data = {
@@ -58,8 +62,14 @@ export default () => {
       data.add_ons.push(add3.ingredient_id)
     }
     axios.post("http://localhost:3003/barrister_cocktail/create_cocktail", data)
-    .then(resp => console.log(resp.data.data))
-    .catch(err => console.log(err))
+    .then(resp => submit_message(resp.data.message), display_status('block'), togglePopup())
+    .catch(err => submit_message(err.response.message), display_status('none'), togglePopup())
+  }
+
+  const [isOpen, setIsOpen] = useState(false);
+ 
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
   }
 
   return (
@@ -69,7 +79,7 @@ export default () => {
 
         <Form.Group className="Cocktail_Name">
           <Form.Label>Cocktail's Name:</Form.Label>
-          <Form.Control type="text" className="Input" ref={nameRef} required />
+          <Form.Control type="text" className="Input" ref={nameRef} required maxLength={20}/>
         </Form.Group>
 
         <Form.Group className="Cocktail_1stSpirit">
@@ -237,8 +247,8 @@ export default () => {
               type="text"
               className="Input2"
               placeholder="$ - "
-              value={total}
-              disabled
+              value={"$" + total}
+              readOnly
             />
           </Form.Group>
         </div>
@@ -248,6 +258,19 @@ export default () => {
             Mix!
           </Button>
         </div>
+      </div>
+      
+      <div>
+        {isOpen && <Popup
+          content={<>
+            <p>{message}</p>
+            <br/>
+            <div style={{display:{display}}}>
+              <Button variant="secondary" className="popup-button" href="http://localhost:3005">My Recipe Book</Button>
+            </div>
+          </>}
+          handleClose={togglePopup}
+        />}
       </div>
     </Form>
   );

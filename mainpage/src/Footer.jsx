@@ -27,7 +27,7 @@ function Footer() {
                 <p>About You: <br/></p>
                 <a href="#1">Profile<br/></a>
                 <a href="#2">Log Out<br/></a>
-            </Col>v
+            </Col>
         </Row>
     </Container>
   );

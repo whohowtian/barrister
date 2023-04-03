@@ -1,0 +1,122 @@
+body {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #AA937F;
+  font-size: 28px;
+}
+
+.title{
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+.subtitle{
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+.link:link{
+  font-style: italic;
+  text-decoration: none;
+  color: #9B006B;
+}
+
+.link:visited{
+  font-style: italic;
+  text-decoration: none;
+  color: #9B006B;
+}
+
+.item{
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 250px;
+  width: 227px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  flex-wrap: wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.popup-box {
+  position: fixed;
+  background: #00000050;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  color: white;
+}
+ 
+.box {
+  position: relative;
+  width: 70%;
+  margin: 0 auto;
+  height: auto;
+  max-height: 70vh;
+  margin-top: calc(100vh - 85vh - 20px);
+  background: #584B3C;
+  border-radius: 4px;
+  padding: 80px;
+  border: 1px solid #999;
+  overflow: auto;
+}
+ 
+.close-icon {
+  cursor: pointer;
+  position: fixed;
+  right: calc(17%);
+  top: calc(100vh - 85vh - 5px);
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+}
+
+.popup-button{
+  background-color: #AA937F;
+  color: black;
+  font-size: 28px;
+}
+
+.popup_img{
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 250px;
+  width: 227px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  flex-wrap: wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.input{
+  font-size: 20px;
+  background-color: #AA937F;
+  color: white;
+}
+
+.popup-alert{
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  color: white;
+}
+
+.alert{
+  position: relative;
+  width: 70%;
+  margin: 0 auto;
+  height: auto;
+  margin-top: calc(100vh - 85vh - 20px);
+  background: #584B3C;
+  border-radius: 4px;
+  padding: 80px;
+  border: 1px solid #999;
+  overflow: auto;
+}

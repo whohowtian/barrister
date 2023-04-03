@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `add_ons` (
   `addOn_id` int NOT NULL,
   `cocktail_id` int NOT NULL,
   PRIMARY KEY (`addOn_id`, `cocktail_id`),
-  FOREIGN KEY (`cocktail_id`) REFERENCES `cocktail`(`cocktail_id`) 
+  FOREIGN KEY (`cocktail_id`) REFERENCES `cocktail`(`cocktail_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `cocktail` (`cocktail_id`, `cocktail_name`, `first_spirit`, `second_spirit`, `sweet_base`, `sour_base`, `user_id`, `cocktail_price`) VALUES

@@ -6,7 +6,6 @@ import Col from 'react-bootstrap/Col';
 import img from './img/Main-Page-Order-Cocktail-Process.jpg';
 import background from './img/Main-Page-Background.jpg';
 import "./index.css";
-import Carousel from './Collaborator-Carousel';
 import Header from './Header';
 import Footer from './Footer';
 import Input from 'create_cocktail/Input';
@@ -81,27 +80,6 @@ const App = () => (
           </Col>
           <Row>
               <div className="orderProcess"><img src={img} alt=""/></div>
-          </Row>
-      </Container>
-      
-
-      <Container className='p-5'>
-          <Row>
-            <Col className="title">PARTNERS AND COLLABORATORS</Col>        
-          </Row>
-          <Row>
-              <Col className="subtitle">Brand Introduction</Col>
-          </Row>
-          <Col>
-            <ol start="4">
-              <li>
-                <p>Our partners in crime.
-                </p>
-              </li>
-            </ol>
-          </Col>
-          <Row className='p-5'>
-            <Carousel/>
           </Row>
       </Container>
       <Footer />
