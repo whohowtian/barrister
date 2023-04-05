@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+
+  ingredient:
+    build:
+      context: ./barrister_ingredient
+      dockerfile: ingredient.Dockerfile
+    image: jwzj/ingredient:1.0
+    restart: always
+    environment:
+      dbURL: mysql+mysqlconnector://is213@host.docker.internal:3306/barrister_ingredient
+      PYTHONUNBUFFERED: 1
+    ports:
+      - "5000:5000"
+  
+  cocktail:
+    build:
+      context: ./barrister_cocktail
+      dockerfile: cocktail.Dockerfile
+    image: jwzj/cocktail:1.0
+    restart: always
+    environment:
+      dbURL: mysql+mysqlconnector://is213@host.docker.internal:3306/barrister_cocktail
+      PYTHONUNBUFFERED: 1
+    ports:
+      - "5001:5000"

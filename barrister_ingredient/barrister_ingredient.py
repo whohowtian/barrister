@@ -2,12 +2,11 @@
 from flask import Flask, request, jsonify, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
+from os import environ
 
 app = Flask(__name__)
 CORS(app)
-user = 'root'
-# user = 'debian-sys-maint' # only for jack
-app.config['SQLALCHEMY_DATABASE_URI'] = (f'mysql+mysqlconnector://{user}@localhost:3306/barrister_ingredient')
+app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('dbURL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -72,4 +71,4 @@ def find_by_ingredient_category(ingredient_category):
     ), 404
 
 if __name__ == '__main__':
-    app.run(port=3004, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
